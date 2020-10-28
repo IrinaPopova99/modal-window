@@ -1,16 +1,16 @@
 function knowMore(buttonClass, overlayClass, popupCloseClass, animationClass) {
-    let more = document.querySelector(buttonClass),
+    let more = document.querySelectorAll(buttonClass),
         overlay = document.querySelector(overlayClass),
         close = document.querySelector(popupCloseClass);
+     more.forEach(more => {       
+        more.addEventListener('click', () => {
+            overlay.style.display = 'block';
+            this.classList.add(animationClass);
+            document.body.style.overflow = 'hidden';
+        });
+     });
 
-    more.addEventListener('click', function() {
-        overlay.style.display = 'block';
-        this.classList.add(animationClass);
-        //запрест на пролистование страницы, пока открыто модальное окно
-        document.body.style.overflow = 'hidden';
-    });
-
-    close.addEventListener('click', function() {
+    close.addEventListener('click', () => {
         overlay.style.display = 'none';
         more.classList.remove(animationClass);
         document.body.style.overflow = '';
